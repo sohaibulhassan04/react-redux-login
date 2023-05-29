@@ -1,0 +1,18 @@
+.sign-in-class{
+    background-color:antiquewhite;
+   position: absolute;
+    height: 100%; 
+    width: 100%;
+    padding-top: 20%;
+    padding-left: 25%;
+}
+.doinline{
+    display: inline-flex;
+}
+.dospace{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.dopadding{
+    padding: 20px;
+}
