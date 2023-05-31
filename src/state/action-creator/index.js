@@ -17,6 +17,15 @@ export const withdrawMoney = (amount)=>{
 export const signup = (account)=>{
     return(dispatch)=>{
         dispatch({
+            type:'signup',
+            payload:account
+        })
+    }
+}
+export const signin = (account)=>{
+    return(dispatch)=>{
+        
+        dispatch({
             type:'signin',
             payload:account
         })
