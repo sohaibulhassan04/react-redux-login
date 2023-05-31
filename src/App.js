@@ -7,7 +7,6 @@ import {
   Route,
 } from "react-router-dom";
 import SignIn from './Components/SignIn';
-import Signup from './Components/Signup';
 import HomeComponent from './Components/HomeComponent';
 import PrivateRoutes from './Components/PrivateRoutes';
 
@@ -15,19 +14,13 @@ function App() {
   return (
       <div className='App'>
 
-      {/* <Router>
-        <Routes>
-        <Route path='/' element={<WelcomeComponent />} />
-        <Route path='/login' element={<SignIn />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/home' element={<HomeComponent />} />
-        </Routes>
-      </Router> */}
+     
 
     <Router>
         <Routes>
           <Route element={<PrivateRoutes/>}>
-          <Route path='/' element={<HomeComponent />}/>
+          <Route path='/home' element={<HomeComponent exact/>}/>
+          <Route path='/welcome' element={<WelcomeComponent />} />
           </Route>
           <Route path='*' element={<SignIn/>}/>
         </Routes>

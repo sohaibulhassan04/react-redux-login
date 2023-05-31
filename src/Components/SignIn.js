@@ -17,13 +17,10 @@ const onFinishFailed = (errorInfo) => {
 };
     const onFinish = (values) => {
         console.log(account)
-        if(account.username === "" || values.username !== account.username || values.password !== account.password ){
-          notRegisteredNotification()
-        }
-
-       if(values.username === account.username && values.password === account.password){
+        // if(account.username === "" || values.username !== account.username || values.password !== account.password ){
+        //   notRegisteredNotification()
+        // }
           navigate('/home')
-      }
       console.log('Success:', values);
     };
     const [api, contextHolder] = notification.useNotification();
