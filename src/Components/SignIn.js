@@ -2,13 +2,19 @@ import { Button, Checkbox, Form, Input , notification} from 'antd';
 import '../Styles/Signin.css'
 import {useNavigate} from 'react-router-dom'
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FrownOutlined } from '@ant-design/icons';
+import { bindActionCreators } from 'redux';
+import { actionCreators } from '../state';
 
 
 const SignIn = () => {
     const navigate=useNavigate();
     const account = useSelector(state => state.account)
+    const dispatch = useDispatch()
+  const {signin}=bindActionCreators(actionCreators,dispatch)
+
+
 const onFinishFailed = (errorInfo) => {
   if(account.username === "" && account.password ===""){
     notRegisteredNotification()
@@ -16,7 +22,7 @@ const onFinishFailed = (errorInfo) => {
   console.log('Failed:', errorInfo);
 };
     const onFinish = (values) => {
-        console.log(account)
+        signin(values)
         // if(account.username === "" || values.username !== account.username || values.password !== account.password ){
         //   notRegisteredNotification()
         // }
@@ -102,8 +108,9 @@ const onFinishFailed = (errorInfo) => {
            </div>
             <div>Don't Have an account? </div>
             <Button type="link" htmlType="link"
-            style={{ "margin-top": "-5px"}}
-            onClick={(e)=>{navigate('/signup')}}>
+            style={{ "marginTop": "-5px"}}
+            // onClick={(e)=>{navigate('/signup')}}
+            >
               Sign Up
             </Button>
            </div>

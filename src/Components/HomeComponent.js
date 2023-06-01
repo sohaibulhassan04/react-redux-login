@@ -5,17 +5,19 @@ import '../Styles/Signin.css'
 import { actionCreators } from '../state/index';
 import { bindActionCreators } from 'redux';
 import { useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 
 const HomeComponent = () => {
 const amount = useSelector(state => state.amount)
+const navigate=useNavigate()
 const dispatch = useDispatch()
-const {depositMoney,withdrawMoney}=bindActionCreators(actionCreators,dispatch)
-useEffect(() => {
-  successNotification()
-  return () => {
-    console.log("welcomeHome")
-  }
-}, [])
+const {depositMoney,withdrawMoney,signout }=bindActionCreators(actionCreators,dispatch)
+// useEffect(() => {
+//   successNotification()
+//   return () => {
+//     console.log("welcomeHome")
+//   }
+// }, [])
 const [api,contextHolder] = notification.useNotification();
 
 const successNotification = () => {
@@ -37,6 +39,8 @@ return(
     icon={<SmileOutlined />}
     title="Enter your Amount Here"
     extra={
+      <div>
+          
         <div>
           {contextHolder}
             <Button type="primary"
@@ -47,6 +51,16 @@ return(
             onClick={()=>depositMoney(100)}
             >+</Button>
         </div>
+        <div>
+        <Button type="primary"
+        style={{"marginTop":"150px"}}
+            onClick={()=>{signout()
+            navigate("/")}}
+            >Sign out</Button>
+        </div>
+      </div>
+        
+       
     }
     
   />
